@@ -18,9 +18,8 @@ struct StackOfDishes {
     mutating func pop() -> Dish? {
         if (count() == 0) {
             return nil
-        } else {
-            return dishes.removeLast()
         }
+        return dishes.removeLast()
     }
     
     func count() -> Int {
@@ -64,7 +63,10 @@ func testStack() {
     stack.push(dinnerDish)
     stack.push(saladDish)
     stack.push(breadDish)
-    stack.pop()
+    if let dish = stack.pop() {
+        assert(dish == breadDish)
+        print("The popped dish is a bread dish")
+    }
     assert(stack.count() == 2, "Stack size is not 2")
     stack.printStack()
     print("-------------")
