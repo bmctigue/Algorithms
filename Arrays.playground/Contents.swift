@@ -160,8 +160,81 @@ func searchArray(testArray:Array<Int>, test: Int) -> Bool {
     return found
 }
 
-findIncludedInMatrix(12)
+//findIncludedInMatrix(12)
 
+// merge sort
 
+func mergeSort(unsortedArray:Array<Int>) -> Array<Int> {
+    let unsorted: Array<Int> = unsortedArray
+    var workingArrays: Array<Array<Int>> = []
+    
+    if (unsorted.count < 2) {
+        return unsorted
+    }
+    
+    for item:Int in unsorted {
+        workingArrays.append([item])
+    }
+    workingArrays = colateArrays(workingArrays)
+    return workingArrays[0]
+}
 
+func colateArrays(arraysToColate: Array<Array<Int>>) -> Array<Array<Int>> {
+    print("arraysToColate: \(arraysToColate)")
+    var workingArrays: Array<Array<Int>> = arraysToColate
+    var tempArrays: Array<Array<Int>> = []
+    var colatedArray: Array<Int>
+    var workingArray1: Array<Int>
+    var workingArray2: Array<Int>
+    while workingArrays.count > 0 {
+        workingArray1 = workingArrays[0]
+        workingArrays.removeFirst()
+        if workingArrays.count == 0 {
+            colatedArray = workingArray1
+        } else {
+            workingArray2 = workingArrays[0]
+            workingArrays.removeFirst()
+            colatedArray = colate(workingArray1, array2: workingArray2)
+        }
+        tempArrays.append(colatedArray)
+    }
+    if tempArrays.count > 1 {
+        tempArrays = colateArrays(tempArrays)
+    }
+    return tempArrays
+}
+
+func colate(array1:Array<Int>, array2:Array<Int>) -> Array<Int> {
+    var firstArray = array1
+    var secondArray = array2
+    var resultArray: Array<Int> = []
+    let totalCount = array1.count + array2.count
+    for _ in 0...totalCount {
+        if (firstArray.count == 0) {
+            resultArray.appendContentsOf(secondArray)
+            break
+        }
+        if (secondArray.count == 0) {
+            resultArray.appendContentsOf(firstArray)
+            break
+        }
+        if (firstArray.first <= secondArray.first) {
+            resultArray.append(firstArray.first!)
+            firstArray.removeFirst()
+        } else {
+            resultArray.append(secondArray.first!)
+            secondArray.removeFirst()
+        }
+    }
+    return resultArray
+}
+
+var testArray1: Array<Int> = [1,2]
+var testArray2: Array<Int> = [2,3,6,8]
+//var result = colate(testArray1,array2:testArray2)
+
+var testArray: Array<Int> = [110,3,2,4,99,32,1,0,22,31,53,6,1000,654,2,45]
+//var testArray: Array<Int> = [3,2,1,5,9]
+//var testArray: Array<Int> = [3,2,4]
+var result = mergeSort(testArray)
 
