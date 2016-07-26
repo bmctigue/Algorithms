@@ -33,10 +33,10 @@ func sampleSource(sourceArray:[Character]) -> [Character] {
         reservoir.append(sourceArray[i])
     }
     
-    for i in reservoirSize..<sourceArray.count {
-        let j = randomNumber(0...i)
+    for totalCount in reservoirSize..<sourceArray.count {
+        let j = randomNumber(0...totalCount)
         if j < reservoirSize {
-            reservoir[j] = sourceArray[i]
+            reservoir[j] = sourceArray[totalCount]
         }
     }
 
