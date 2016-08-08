@@ -24,11 +24,11 @@ func randomNumber(range: Range<Int>) -> Int {
     return Int(arc4random_uniform(UInt32(max - min))) + min
 }
 
-var reservoir: [Character] = []
-let reservoirSize = 10
-
 func sampleSource(sourceArray:[Character]) -> [Character] {
-    // fill the resevoir
+    var reservoir: [Character] = []
+    let reservoirSize = 10
+    
+    // fill the reservoir
     for i in 0..<reservoirSize {
         reservoir.append(sourceArray[i])
     }
