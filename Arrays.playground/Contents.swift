@@ -8,9 +8,9 @@ import UIKit
 //let sourceArray: Array<Int> = [3]
 //let sourceArray: Array<Int> = [0,3]
 //let sourceArray: Array<Int> = [3,0]
-let sourceArray: Array<Int> = [3,66,7,1,9,0]
+//let sourceArray: Array<Int> = [3,66,7,1,9,0]
 //let sourceArray: Array<Int> = [1,2,3,4,5,6]
-//let sourceArray: Array<Int> = [6,5,4,3,2,1]
+let sourceArray: Array<Int> = [6,5,4,3,2,1]
 
 func bubbleSortForArray(testArray:Array<Int>) -> Array<Int> {
     if testArray.count < 2 {
@@ -34,7 +34,39 @@ func bubbleSortForArray(testArray:Array<Int>) -> Array<Int> {
     return bubbleArray
 }
 
+func bubbleSortForArray2(testArray:Array<Int>) -> Array<Int> {
+    var bubbleArray:Array<Int> = testArray
+    if testArray.count <= 2 {
+        if testArray.count == 2 {
+            return checkAndSwap(bubbleArray, index: 0)
+        }
+        return testArray
+    }
+    
+    let endIndex = bubbleArray.count-2
+    var innerEndIndex = endIndex
+    for _ in 0...bubbleArray.count-2 {
+        for innerIndex in 0...innerEndIndex {
+            bubbleArray = checkAndSwap(bubbleArray, index: innerIndex)
+        }
+        innerEndIndex -= 1
+    }
+    return bubbleArray
+}
+
+func checkAndSwap(bubbleArray: Array<Int>, index: Int) -> Array<Int> {
+    var bubbleArray = bubbleArray
+    var temp: Int
+    if bubbleArray[index] > bubbleArray[index+1] {
+        temp = bubbleArray[index+1]
+        bubbleArray[index+1] = bubbleArray[index]
+        bubbleArray[index] = temp
+    }
+    return bubbleArray
+}
+
 let bubbleResult = bubbleSortForArray(sourceArray)
+//let bubbleResult2 = bubbleSortForArray2(sourceArray)
 
 // insertion sort
 
@@ -64,7 +96,7 @@ func insertionSortForArray(testArray:Array<Int>) -> Array<Int> {
     return insertionArray
 }
 
-let insertionResult = insertionSortForArray(sourceArray)
+//let insertionResult = insertionSortForArray(sourceArray)
 
 var array1 = [2,3,1,0,2,5,3]
 
@@ -236,5 +268,5 @@ var testArray2: Array<Int> = [2,3,6,8]
 var testArray: Array<Int> = [110,3,2,4,99,32,1,0,22,31,53,6,1000,654,2,45]
 //var testArray: Array<Int> = [3,2,1,5,9]
 //var testArray: Array<Int> = [3,2,4]
-var result = mergeSort(testArray)
+//var result = mergeSort(testArray)
 

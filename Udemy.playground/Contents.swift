@@ -1,7 +1,3 @@
-//: Playground - noun: a place where people can play
-
-import UIKit
-
 // Euclid find the greatest common denominator of 2 integers, m > n
 
 func findGCD(m: Int, n:Int) -> Int {
