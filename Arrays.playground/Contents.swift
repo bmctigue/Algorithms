@@ -45,7 +45,7 @@ func bubbleSortForArray2(testArray:Array<Int>) -> Array<Int> {
     
     let endIndex = bubbleArray.count-2
     var innerEndIndex = endIndex
-    for _ in 0...bubbleArray.count-2 {
+    for _ in 0...endIndex {
         for innerIndex in 0...innerEndIndex {
             bubbleArray = checkAndSwap(bubbleArray, index: innerIndex)
         }
