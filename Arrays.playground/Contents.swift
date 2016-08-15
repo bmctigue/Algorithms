@@ -198,11 +198,7 @@ func searchArray(testArray:Array<Int>, test: Int) -> Bool {
     var slice: Array<Int>
     var found: Bool
     if (testArray.count == 1) {
-        if test == indexValue {
-            found = true
-        } else {
-            found = false
-        }
+        found = test == indexValue
     } else {
         if test == indexValue {
             found = true
@@ -219,7 +215,7 @@ func searchArray(testArray:Array<Int>, test: Int) -> Bool {
     return found
 }
 
-//findIncludedInMatrix(12)
+findIncludedInMatrix(12)
 
 // merge sort
 
