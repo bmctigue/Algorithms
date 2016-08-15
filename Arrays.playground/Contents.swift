@@ -8,9 +8,10 @@ import UIKit
 //let sourceArray: Array<Int> = [3]
 //let sourceArray: Array<Int> = [0,3]
 //let sourceArray: Array<Int> = [3,0]
-//let sourceArray: Array<Int> = [3,66,7,1,9,0]
+//let sourceArray: Array<Int> = [3,1,2]
+let sourceArray: Array<Int> = [3,66,7,1,9,0]
 //let sourceArray: Array<Int> = [1,2,3,4,5,6]
-let sourceArray: Array<Int> = [6,5,4,3,2,1]
+//let sourceArray: Array<Int> = [6,5,4,3,2,1]
 
 func bubbleSortForArray(testArray:Array<Int>) -> Array<Int> {
     if testArray.count < 2 {
@@ -54,6 +55,31 @@ func bubbleSortForArray2(testArray:Array<Int>) -> Array<Int> {
     return bubbleArray
 }
 
+// selection sort
+
+func selectionSort(testArray: Array<Int>) -> Array<Int> {
+    var selectionArray:Array<Int> = testArray
+    var temp: Int
+    if testArray.count <= 2 {
+        if testArray.count == 2 {
+            return checkAndSwap(selectionArray, index: 0)
+        }
+        return testArray
+    }
+    for index in 0...selectionArray.count-2 {
+        var minIndex = index
+        for selectionIndex in index+1..<selectionArray.count {
+            if selectionArray[selectionIndex] < selectionArray[minIndex] {
+                minIndex = selectionIndex
+            }
+        }
+        temp = selectionArray[index]
+        selectionArray[index] = selectionArray[minIndex]
+        selectionArray[minIndex] = temp
+    }
+    return selectionArray
+}
+
 func checkAndSwap(bubbleArray: Array<Int>, index: Int) -> Array<Int> {
     var bubbleArray = bubbleArray
     var temp: Int
@@ -65,7 +91,9 @@ func checkAndSwap(bubbleArray: Array<Int>, index: Int) -> Array<Int> {
     return bubbleArray
 }
 
-let bubbleResult = bubbleSortForArray(sourceArray)
+let selectionResult = selectionSort(sourceArray)
+//
+//let bubbleResult = bubbleSortForArray(sourceArray)
 //let bubbleResult2 = bubbleSortForArray2(sourceArray)
 
 // insertion sort
@@ -156,10 +184,9 @@ func checkIfIncluded(testArray:Array<Int>, test: Int) -> Bool {
     print("\(testArray)")
     if test > testArray[testArray.count-1] {
         return false
-    } else {
-        let found = searchArray(testArray, test: test)
-        return found
     }
+    let found = searchArray(testArray, test: test)
+    return found
 }
 
 // binary search
@@ -251,11 +278,10 @@ func colate(array1:Array<Int>, array2:Array<Int>) -> Array<Int> {
             break
         }
         if (firstArray.first <= secondArray.first) {
-            resultArray.append(firstArray.first!)
-            firstArray.removeFirst()
+            resultArray.append(firstArray.removeFirst())
+            
         } else {
-            resultArray.append(secondArray.first!)
-            secondArray.removeFirst()
+            resultArray.append(secondArray.removeFirst())
         }
     }
     return resultArray
