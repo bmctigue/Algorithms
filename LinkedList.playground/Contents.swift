@@ -19,6 +19,9 @@ struct ListNode: Node {
 protocol Linked {
     var head: Node? { get set }
     mutating func insertHead(node: Node)
+    mutating func deleteHead()
+    func length() -> Int
+    func printList()
 }
 
 struct LinkedList: Linked {
@@ -30,6 +33,10 @@ struct LinkedList: Linked {
             node.nextNode = head
         }
         self.head = node
+    }
+    
+    mutating func deleteHead() {
+        self.head = self.head?.nextNode
     }
     
     func length() -> Int {
@@ -66,4 +73,7 @@ var list = LinkedList()
 list.insertHead(node)
 list.insertHead(node2)
 list.printList()
-let length = list.length()
+var length = list.length()
+list.deleteHead()
+list.printList()
+length = list.length()
