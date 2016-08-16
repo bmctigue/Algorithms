@@ -5,6 +5,7 @@ import Foundation
 protocol Node {
     var data: Int { get set }
     var nextNode: Node? { get set }
+    init(data: Int)
 }
 
 struct ListNode: Node {
