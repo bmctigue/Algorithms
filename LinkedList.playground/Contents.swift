@@ -32,6 +32,19 @@ struct LinkedList: Linked {
         self.head = node
     }
     
+    func length() -> Int {
+        var length = 0
+        var node: Node? = head
+        if (node == nil) {
+            return 0
+        }
+        while node != nil {
+            length += 1
+            node = node!.nextNode
+        }
+        return length
+    }
+    
     func printList() {
         var node: Node? = head
         var nodeList: String = "["
@@ -53,3 +66,4 @@ var list = LinkedList()
 list.insertHead(node)
 list.insertHead(node2)
 list.printList()
+let length = list.length()
