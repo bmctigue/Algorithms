@@ -21,6 +21,7 @@ protocol Linked {
     mutating func insertHead(node: Node)
     mutating func deleteHead()
     func length() -> Int
+    func find(data: Int) -> Node?
     func printList()
 }
 
@@ -52,6 +53,19 @@ struct LinkedList: Linked {
         return length
     }
     
+    func find(data: Int) -> Node? {
+        var node: Node? = head
+        while node != nil {
+            if (node == nil) {
+                return nil
+            } else if node?.data == data {
+                return node
+            }
+            node = node!.nextNode
+        }
+        return nil
+    }
+    
     func printList() {
         var node: Node? = head
         var nodeList: String = "["
@@ -74,6 +88,8 @@ list.insertHead(node)
 list.insertHead(node2)
 list.printList()
 var length = list.length()
+let findNode1 = list.find(node.data)?.data
+let findNode2 = list.find(node2.data)?.data
 list.deleteHead()
 list.printList()
 length = list.length()
