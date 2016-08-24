@@ -81,15 +81,44 @@ struct LinkedList: Linked {
     }
 }
 
-let node = ListNode(data: 5)
-let node2 = ListNode(data: 2)
+let node = ListNode(data: 4)
+let node2 = ListNode(data: 3)
+let node3 = ListNode(data: 2)
+let node4 = ListNode(data: 1)
 var list = LinkedList()
 list.insertHead(node)
 list.insertHead(node2)
+list.insertHead(node3)
+list.insertHead(node4)
 list.printList()
-var length = list.length()
-let findNode1 = list.find(node.data)?.data
-let findNode2 = list.find(node2.data)?.data
-list.deleteHead()
-list.printList()
-length = list.length()
+//var length = list.length()
+//let findNode1 = list.find(node.data)?.data
+//let findNode2 = list.find(node2.data)?.data
+//list.deleteHead()
+//list.printList()
+//length = list.length()
+
+// Reverse a linked list
+
+func reverseLinkedList(list: LinkedList) -> LinkedList {
+    if list.length() < 2 {
+        return list
+    }
+    var list = list
+    var currentNode: Node? = list.head
+    var temp: Node? = currentNode?.nextNode
+    currentNode?.nextNode = nil
+    
+    while temp != nil {
+        list.head = temp
+        list.head?.nextNode = currentNode
+        currentNode = temp
+        currentNode?.nextNode = list.head?.nextNode
+        temp = temp?.nextNode
+    }
+    return list
+}
+let reversedList = reverseLinkedList(list)
+reversedList.printList()
+
+
