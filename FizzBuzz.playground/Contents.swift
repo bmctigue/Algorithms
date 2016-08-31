@@ -5,7 +5,7 @@ import UIKit
 //"Write a program that prints the numbers from 1 to 100. But for multiples of three print “Fizz” instead of the number and for the multiples of five print “Buzz”. For numbers which are multiples of both three and five print “FizzBuzz”."
 
 //for i in 1...100 {
-//    if i % 15 == 0 {
+//    if i % (3 * 5) == 0 {
 //        print("FizzBuzz")
 //    } else if i % 3 == 0 {
 //        print("Fizz")
@@ -16,41 +16,32 @@ import UIKit
 //    }
 //}
 
-protocol FizzBuzz {
-    var lower: Int { get }
-    var upper: Int { get }
-    var x: Int { get }
-    var y: Int { get }
-    func run()
-    func fizzBuzzString(divisibleByX: Bool, divisibleByY: Bool) -> String?
-}
-
-struct MyFizzBuzz: FizzBuzz {
+struct FizzBuzz {
     
-    private(set) var lower: Int
-    private(set) var upper: Int
-    private(set) var x: Int
-    private(set) var y: Int
+    private(set) var lowerLimit: Int
+    private(set) var upperLimit: Int
+    private(set) var xDivisor: Int
+    private(set) var yDivisor: Int
     
-    init(lower: Int, upper: Int, x: Int, y: Int) {
-        self.lower = lower
-        self.upper = upper
-        self.x = x
-        self.y = y
+    init(lowerLimit: Int, upperLimit: Int, xDivisor: Int, yDivisor: Int) {
+        self.lowerLimit = lowerLimit
+        self.upperLimit = upperLimit
+        self.xDivisor = xDivisor
+        self.yDivisor = yDivisor
     }
     
     func run() {
-        if (upper <= lower) {
-            print("illegal lower and upper values")
+        if lowerLimit < 0 || upperLimit < 0 || upperLimit <= lowerLimit {
+            print("illegal lowerLimit/upperLimit values!")
             return
         }
-        for i in lower...upper {
-            fizzBuzzForValues(i, x: x, y: y)
+        for i in lowerLimit...upperLimit {
+            printResult(i, xDivisor: xDivisor, yDivisor: yDivisor)
         }
     }
     
-    func fizzBuzzForValues(i: Int, x: Int, y: Int) {
-        let result: String? = evaluateFizzBuzz(i, x: x, y: y)
+    private func printResult(i: Int, xDivisor: Int, yDivisor: Int) {
+        let result: String? = evaluateNumber(i, xDivisor: xDivisor, yDivisor: yDivisor)
         if result != nil {
             print(result!)
         } else {
@@ -58,32 +49,32 @@ struct MyFizzBuzz: FizzBuzz {
         }
     }
     
-    func evaluateFizzBuzz(i: Int, x: Int, y: Int) -> String? {
-        let divisibleByX = i % x == 0
-        let divisibleByY = i % y == 0
-        return fizzBuzzString(divisibleByX, divisibleByY: divisibleByY)
+    private func evaluateNumber(i: Int, xDivisor: Int, yDivisor: Int) -> String? {
+        let divisibleByX = i % xDivisor == 0
+        let divisibleByY = i % yDivisor == 0
+        return resultString(divisibleByX, divisibleByY: divisibleByY)
     }
     
-    func fizzBuzzString(divisibleByX: Bool, divisibleByY: Bool) -> String? {
+    private func resultString(divisibleByX: Bool, divisibleByY: Bool) -> String? {
         if divisibleByX && divisibleByY {
-            return(FizzBuzzValue.FizzBuzz.rawValue)
+            return(ResultString.XY.rawValue)
         } else if divisibleByX {
-            return(FizzBuzzValue.Fizz.rawValue)
+            return(ResultString.X.rawValue)
         } else if divisibleByY {
-            return(FizzBuzzValue.Buzz.rawValue)
+            return(ResultString.Y.rawValue)
         }
         return nil
     }
     
-    enum FizzBuzzValue: String {
-        case Fizz = "Fizz"
-        case Buzz = "Buzz"
-        case FizzBuzz = "FizzBuzz"
+    private enum ResultString: String {
+        case X = "Fizz"
+        case Y = "Buzz"
+        case XY = "FizzBuzz"
     }
 }
 
-let myFizzBuzz = MyFizzBuzz.init(lower: 1, upper: 100, x: 3, y: 5)
-myFizzBuzz.run()
+let fizzBuzz = FizzBuzz.init(lowerLimit: 1, upperLimit: 100, xDivisor: 3, yDivisor: 5)
+fizzBuzz.run()
 
 
 
