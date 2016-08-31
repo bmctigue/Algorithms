@@ -21,7 +21,7 @@ protocol FizzBuzz {
     var upper: Int { get }
     var x: Int { get }
     var y: Int { get }
-    func runFizzBuzz()
+    func run()
     func fizzBuzzString(divisibleByX: Bool, divisibleByY: Bool) -> String?
 }
 
@@ -39,7 +39,7 @@ struct MyFizzBuzz: FizzBuzz {
         self.y = y
     }
     
-    func runFizzBuzz() {
+    func run() {
         if (upper <= lower) {
             print("illegal lower and upper values")
             return
@@ -83,7 +83,7 @@ struct MyFizzBuzz: FizzBuzz {
 }
 
 let myFizzBuzz = MyFizzBuzz.init(lower: 1, upper: 100, x: 3, y: 5)
-myFizzBuzz.runFizzBuzz()
+myFizzBuzz.run()
 
 
 
