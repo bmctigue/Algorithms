@@ -21,6 +21,12 @@ struct FizzBuzz {
     private(set) var xDivisor: Int
     private(set) var yDivisor: Int
     
+    private enum ResultString: String {
+        case X = "Fizz"
+        case Y = "Buzz"
+        case XY = "FizzBuzz"
+    }
+    
     init(lowerLimit: Int, upperLimit: Int, xDivisor: Int, yDivisor: Int) {
         self.lowerLimit = lowerLimit
         self.upperLimit = upperLimit
@@ -34,26 +40,15 @@ struct FizzBuzz {
             return
         }
         for i in lowerLimit...upperLimit {
-            printResult(i, xDivisor: xDivisor, yDivisor: yDivisor)
-        }
-    }
-    
-    private func printResult(i: Int, xDivisor: Int, yDivisor: Int) {
-        let result: String? = evaluateNumber(i, xDivisor: xDivisor, yDivisor: yDivisor)
-        if result != nil {
-            print(result!)
-        } else {
-            print("\(i)")
+            let result: String? = evaluateNumber(i, xDivisor: xDivisor, yDivisor: yDivisor)
+            printResult(i, result: result)
         }
     }
     
     private func evaluateNumber(i: Int, xDivisor: Int, yDivisor: Int) -> String? {
         let divisibleByX = i % xDivisor == 0
         let divisibleByY = i % yDivisor == 0
-        return resultString(divisibleByX, divisibleByY: divisibleByY)
-    }
-    
-    private func resultString(divisibleByX: Bool, divisibleByY: Bool) -> String? {
+        
         if divisibleByX && divisibleByY {
             return(ResultString.XY.rawValue)
         } else if divisibleByX {
@@ -64,11 +59,14 @@ struct FizzBuzz {
         return nil
     }
     
-    private enum ResultString: String {
-        case X = "Fizz"
-        case Y = "Buzz"
-        case XY = "FizzBuzz"
+    private func printResult(i: Int, result: String?) {
+        if result != nil {
+            print(result!)
+        } else {
+            print("\(i)")
+        }
     }
+    
 }
 
 let fizzBuzz = FizzBuzz.init(lowerLimit: 1, upperLimit: 100, xDivisor: 3, yDivisor: 5)
