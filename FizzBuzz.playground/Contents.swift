@@ -14,6 +14,21 @@
 //    }
 //}
 
+//class FizzBuzz {
+//    func check(number: Int) -> String {
+//        switch (number % 3, number % 5) {
+//        case (0, 0):
+//            return "FizzBuzz!"
+//        case (0, _):
+//            return "Fizz!"
+//        case (_, 0):
+//            return "Buzz!"
+//        case (_, _):
+//            return "\(number)"
+//        }
+//    }
+//}
+
 struct FizzBuzz {
     
     private(set) var lowerLimit: Int
@@ -49,14 +64,16 @@ struct FizzBuzz {
         let divisibleByX = i % xDivisor == 0
         let divisibleByY = i % yDivisor == 0
         
-        if divisibleByX && divisibleByY {
+        switch (divisibleByX,divisibleByY) {
+        case (true,true):
             return(ResultString.XY.rawValue)
-        } else if divisibleByX {
+        case (true,false):
             return(ResultString.X.rawValue)
-        } else if divisibleByY {
+        case (false,true):
             return(ResultString.Y.rawValue)
+        default:
+            return nil
         }
-        return nil
     }
     
     private func printResult(i: Int, result: String?) {
