@@ -81,15 +81,19 @@ struct LinkedList: Linked {
     }
 }
 
-let node = ListNode(data: 4)
-let node2 = ListNode(data: 3)
-let node3 = ListNode(data: 2)
-let node4 = ListNode(data: 1)
+let node =  ListNode(data: 6)
+let node2 = ListNode(data: 5)
+let node3 = ListNode(data: 4)
+let node4 = ListNode(data: 3)
+let node5 = ListNode(data: 2)
+let node6 = ListNode(data: 1)
 var list = LinkedList()
 list.insertHead(node)
 list.insertHead(node2)
 list.insertHead(node3)
 list.insertHead(node4)
+list.insertHead(node5)
+list.insertHead(node6)
 list.printList()
 //var length = list.length()
 //let findNode1 = list.find(node.data)?.data
@@ -118,7 +122,36 @@ func reverseLinkedList(list: LinkedList) -> LinkedList {
     }
     return list
 }
-let reversedList = reverseLinkedList(list)
-reversedList.printList()
+//let reversedList = reverseLinkedList(list)
+//reversedList.printList()
+
+func findKthNodeFromEnd(k: Int, head: Node?) -> Node? {
+    var count = 0
+    var currentNode = head
+    var kthNode: Node?
+    
+    while currentNode != nil {
+        if count >= k {
+            if kthNode == nil {
+                kthNode = head
+            } else {
+                kthNode = kthNode?.nextNode
+            }
+        }
+        currentNode = currentNode?.nextNode
+        count += 1
+    }
+    return kthNode
+}
+
+var kthNode: Node?
+for i in 0...7 {
+    kthNode = findKthNodeFromEnd(i, head: list.head)
+    if let node = kthNode {
+        print(node.data)
+    } else {
+        print("it's nil")
+    }
+}
 
 
