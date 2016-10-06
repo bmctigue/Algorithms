@@ -39,6 +39,39 @@ func findLowHighStocks(stocks: [Int], lowStock: Int, highStock: Int, profit: Int
     return (lowStock,highStock,profit)
 }
 
-let test = [10, 7, 5, 8, 11, 9]
-let result = lowHighStocks(stocks: test)
-printTestResult(test: test, result: result, passingResult: (5,11,6))
+//let test = [10, 7, 5, 8, 11, 9]
+//let result = lowHighStocks(stocks: test)
+//printTestResult(test: test, result: result, passingResult: (5,11,6))
+
+// This method is keeping track of the max profit and associated lowest stock
+func testN() -> (Int,Int)? {
+    let test = [10,10]
+    if test.count < 2 {
+        return nil
+    }
+    var profit = test[1] - test[0]
+    var low = test[0]
+    var high = test[0]
+    for i in test {
+        if ((i - low) > profit) {
+            profit = i - low
+        }
+        if i < low {
+            low = i
+        }
+        print("low: \(low)")
+        print("profit: \(profit)")
+    }
+    high = low + profit
+    print("high: \(high)")
+    if low == high {
+        return nil
+    }
+    return (low,high)
+}
+
+if let lowHigh = testN() {
+    print("\(lowHigh)")
+} else {
+    print ("nil")
+}
