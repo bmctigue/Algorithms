@@ -39,7 +39,7 @@ func bubbleSortForArray2(testArray:Array<Int>) -> Array<Int> {
     var bubbleArray:Array<Int> = testArray
     if testArray.count <= 2 {
         if testArray.count == 2 {
-            return checkAndSwap(bubbleArray, index: 0)
+            return checkAndSwap(bubbleArray: bubbleArray, index: 0)
         }
         return testArray
     }
@@ -48,7 +48,7 @@ func bubbleSortForArray2(testArray:Array<Int>) -> Array<Int> {
     var innerEndIndex = endIndex
     for _ in 0...endIndex {
         for innerIndex in 0...innerEndIndex {
-            bubbleArray = checkAndSwap(bubbleArray, index: innerIndex)
+            bubbleArray = checkAndSwap(bubbleArray: bubbleArray, index: innerIndex)
         }
         innerEndIndex -= 1
     }
@@ -62,7 +62,7 @@ func selectionSort(testArray: Array<Int>) -> Array<Int> {
     var temp: Int
     if testArray.count <= 2 {
         if testArray.count == 2 {
-            return checkAndSwap(selectionArray, index: 0)
+            return checkAndSwap(bubbleArray: selectionArray, index: 0)
         }
         return testArray
     }
@@ -91,7 +91,7 @@ func checkAndSwap(bubbleArray: Array<Int>, index: Int) -> Array<Int> {
     return bubbleArray
 }
 
-let selectionResult = selectionSort(sourceArray)
+let selectionResult = selectionSort(testArray: sourceArray)
 //
 //let bubbleResult = bubbleSortForArray(sourceArray)
 //let bubbleResult2 = bubbleSortForArray2(sourceArray)
@@ -171,7 +171,7 @@ func findIncludedInMatrix(test:Int) {
         if test < testArray[0] {
             break
         }
-        included = checkIfIncluded(testArray, test: test)
+        included = checkIfIncluded(testArray: testArray, test: test)
         if (included) {
             result = ("\(test) is included")
             break
@@ -185,7 +185,7 @@ func checkIfIncluded(testArray:Array<Int>, test: Int) -> Bool {
     if test > testArray[testArray.count-1] {
         return false
     }
-    let found = searchArray(testArray, test: test)
+    let found = searchArray(testArray: testArray, test: test)
     return found
 }
 
@@ -205,23 +205,23 @@ func searchArray(testArray:Array<Int>, test: Int) -> Bool {
         } else if test < testArray[index] {
             slice = Array(testArray[0..<index])
             print("\(slice)")
-            found = searchArray(slice, test:test)
+            found = searchArray(testArray: slice, test:test)
         } else {
             slice = Array(testArray[index..<testArray.count])
             print("\(slice)")
-            found = searchArray(slice, test:test)
+            found = searchArray(testArray: slice, test:test)
         }
     }
     return found
 }
 
-findIncludedInMatrix(12)
+findIncludedInMatrix(test: 12)
 
 // merge sort
 
-func mergeSort(unsortedArray:Array<Int>) -> Array<Int> {
-    let unsorted: Array<Int> = unsortedArray
-    var workingArrays: Array<Array<Int>> = []
+func mergeSort(unsortedArray:[Int]) -> [Int] {
+    let unsorted: [Int] = unsortedArray
+    var workingArrays: [[Int]] = []
     
     if (unsorted.count < 2) {
         return unsorted
@@ -230,17 +230,16 @@ func mergeSort(unsortedArray:Array<Int>) -> Array<Int> {
     for item:Int in unsorted {
         workingArrays.append([item])
     }
-    workingArrays = colateArrays(workingArrays)
+    workingArrays = colateArrays(arraysToColate: workingArrays)
     return workingArrays[0]
 }
 
-func colateArrays(arraysToColate: Array<Array<Int>>) -> Array<Array<Int>> {
-    print("arraysToColate: \(arraysToColate)")
-    var workingArrays: Array<Array<Int>> = arraysToColate
-    var tempArrays: Array<Array<Int>> = []
-    var colatedArray: Array<Int>
-    var workingArray1: Array<Int>
-    var workingArray2: Array<Int>
+func colateArrays(arraysToColate: [[Int]]) -> [[Int]] {
+    var workingArrays: [[Int]] = arraysToColate
+    var tempArrays: [[Int]] = []
+    var colatedArray: [Int]
+    var workingArray1: [Int]
+    var workingArray2: [Int]
     while workingArrays.count > 0 {
         workingArray1 = workingArrays[0]
         workingArrays.removeFirst()
@@ -249,31 +248,31 @@ func colateArrays(arraysToColate: Array<Array<Int>>) -> Array<Array<Int>> {
         } else {
             workingArray2 = workingArrays[0]
             workingArrays.removeFirst()
-            colatedArray = colate(workingArray1, array2: workingArray2)
+            colatedArray = colate(array1: workingArray1, array2: workingArray2)
         }
         tempArrays.append(colatedArray)
     }
     if tempArrays.count > 1 {
-        tempArrays = colateArrays(tempArrays)
+        tempArrays = colateArrays(arraysToColate: tempArrays)
     }
     return tempArrays
 }
 
-func colate(array1:Array<Int>, array2:Array<Int>) -> Array<Int> {
+func colate(array1:[Int], array2:[Int]) -> [Int] {
     var firstArray = array1
     var secondArray = array2
-    var resultArray: Array<Int> = []
+    var resultArray: [Int] = []
     let totalCount = array1.count + array2.count
     for _ in 0...totalCount {
         if (firstArray.count == 0) {
-            resultArray.appendContentsOf(secondArray)
+            resultArray.append(contentsOf: secondArray)
             break
         }
         if (secondArray.count == 0) {
-            resultArray.appendContentsOf(firstArray)
+            resultArray.append(contentsOf: firstArray)
             break
         }
-        if (firstArray.first <= secondArray.first) {
+        if (firstArray.first! <= secondArray.first!) {
             resultArray.append(firstArray.removeFirst())
             
         } else {
@@ -282,6 +281,7 @@ func colate(array1:Array<Int>, array2:Array<Int>) -> Array<Int> {
     }
     return resultArray
 }
+
 
 var testArray1: Array<Int> = [1,2]
 var testArray2: Array<Int> = [2,3,6,8]
