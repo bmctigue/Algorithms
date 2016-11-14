@@ -5,8 +5,10 @@ protocol NodeProtocol {
     var leftNode: Node? { get set }
     var rightNode: Node? { get set }
     var deleted: Bool { get set }
+    var nodeHeight: Int { get set }
     func find(data: Int) -> Node?
     func delete(data: Int)
+    func height() -> Int
 }
 
 class Node: NodeProtocol {
@@ -14,6 +16,7 @@ class Node: NodeProtocol {
     var leftNode: Node?
     var rightNode: Node?
     var deleted: Bool = false
+    var nodeHeight: Int = -1
     
     init(data: Int) {
         self.data = data
@@ -23,11 +26,11 @@ class Node: NodeProtocol {
         if self.data == data && deleted == false {
             return self
         }
-        if leftNode != nil && leftNode?.data < data {
-            return leftNode!.find(data)
+        if leftNode != nil && (leftNode?.data)! < data {
+            return leftNode!.find(data: data)
         }
         if rightNode != nil {
-            return rightNode!.find(data)
+            return rightNode!.find(data: data)
         }
         return nil
     }
@@ -37,20 +40,38 @@ class Node: NodeProtocol {
             if rightNode == nil {
                 rightNode = Node(data: data)
             } else {
-                rightNode!.insert(data)
+                rightNode!.insert(data: data)
             }
         } else {
             if leftNode == nil {
                 leftNode = Node(data: data)
             } else {
-                leftNode!.insert(data)
+                leftNode!.insert(data: data)
             }
         }
     }
     
     func delete(data: Int) {
-        let node = find(data)
+        let node = find(data: data)
         node?.deleted = true
+    }
+    
+    func height() -> Int {
+        var leftHeight: Int = -1
+        var rightHeight: Int = -1
+        print("leftNode:\(leftNode?.data)")
+        print("rightNode:\(rightNode?.data)")
+        if leftNode != nil {
+            leftHeight = leftNode!.height()
+            print("leftHeight:\(leftHeight)")
+        }
+        if rightNode != nil {
+            rightHeight = rightNode!.height()
+            print("rightHeight:\(rightHeight)")
+        }
+        self.nodeHeight = max(leftHeight,rightHeight) + 1
+        print("data: \(self.data), height:\(self.nodeHeight)")
+        return self.nodeHeight
     }
 }
 
@@ -61,6 +82,7 @@ protocol BinaryTreeProtocol {
     var root: Node? { get set }
     func find(data: Int) -> Node?
     func delete(data: Int)
+    func height(node: Node?)
 }
 
 struct BinaryTree {
@@ -71,15 +93,19 @@ struct BinaryTree {
     }
     
     func find(data: Int) -> Node? {
-        return root?.find(data)
+        return root?.find(data: data)
     }
     
     func insert(data: Int) {
-        root?.insert(data)
+        root?.insert(data: data)
     }
     
     func delete(data: Int) {
-        root?.delete(data)
+        root?.delete(data: data)
+    }
+    
+    func height() -> Int {
+        return (root?.height())!
     }
 }
 
@@ -87,19 +113,25 @@ let tree = BinaryTree(root:node)
 tree.root?.data
 
 // find
-var result = tree.find(5)
+var result = tree.find(data: 5)
 result?.data
-result = tree.find(9)
+result = tree.find(data: 9)
+result?.data
+
+tree.insert(data: 9)
 result?.data
 
 // insert
-tree.insert(10)
-result = tree.find(10)
+tree.insert(data: 10)
+result = tree.find(data: 10)
 result?.data
 
+// height
+tree.height()
+
 // delete
-tree.delete(10)
-result = tree.find(10)
+tree.delete(data: 10)
+result = tree.find(data: 10)
 result?.data
 
 

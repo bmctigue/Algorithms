@@ -46,20 +46,20 @@ func findSubString(testString: String, subString: String) -> Int {
 }
 
 // initial condition checks
-findSubString("", subString: "Web")
-findSubString("We", subString: "")
-findSubString("", subString: "")
-findSubString("We", subString: "Web")
-findSubString("Web", subString: "Web")
+findSubString(testString: "", subString: "Web")
+findSubString(testString: "We", subString: "")
+findSubString(testString: "", subString: "")
+findSubString(testString: "We", subString: "Web")
+findSubString(testString: "Web", subString: "Web")
 
 // simplest case where substring is 1 char
-findSubString("Web", subString: "c")
-findSubString("We", subString: "W")
-findSubString("We", subString: "e")
-findSubString("Web", subString: "b")
+findSubString(testString: "Web", subString: "c")
+findSubString(testString: "We", subString: "W")
+findSubString(testString: "We", subString: "e")
+findSubString(testString: "Web", subString: "b")
 
-findSubString("World Wide Web", subString: "Test")
-findSubString("World Wide Web", subString: "World")
-findSubString("World Wide Web", subString: "Wide")
-findSubString("World Wide Web", subString: "Web")
-findSubString("World Wide Web", subString: "eb")
+findSubString(testString: "World Wide Web", subString: "Test")
+findSubString(testString: "World Wide Web", subString: "World")
+findSubString(testString: "World Wide Web", subString: "Wide")
+findSubString(testString: "World Wide Web", subString: "Web")
+findSubString(testString: "World Wide Web", subString: "eb")

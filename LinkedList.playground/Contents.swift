@@ -88,12 +88,12 @@ let node4 = ListNode(data: 3)
 let node5 = ListNode(data: 2)
 let node6 = ListNode(data: 1)
 var list = LinkedList()
-list.insertHead(node)
-list.insertHead(node2)
-list.insertHead(node3)
-list.insertHead(node4)
-list.insertHead(node5)
-list.insertHead(node6)
+list.insertHead(node: node)
+list.insertHead(node: node2)
+list.insertHead(node: node3)
+list.insertHead(node: node4)
+list.insertHead(node: node5)
+list.insertHead(node: node6)
 list.printList()
 //var length = list.length()
 //let findNode1 = list.find(node.data)?.data
@@ -146,7 +146,7 @@ func findKthNodeFromEnd(k: Int, head: Node?) -> Node? {
 
 var kthNode: Node?
 for i in 0...7 {
-    kthNode = findKthNodeFromEnd(i, head: list.head)
+    kthNode = findKthNodeFromEnd(k: i, head: list.head)
     if let node = kthNode {
         print(node.data)
     } else {

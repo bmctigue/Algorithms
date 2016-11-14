@@ -11,8 +11,8 @@ func diceRoll(roll1: Int, roll2: Int) -> Int {
     return sum
 }
 
-diceRoll(1, roll2: 2)
-diceRoll(2, roll2: 2)
+diceRoll(roll1: 1, roll2: 2)
+diceRoll(roll1: 2, roll2: 2)
 
 //Numbers to Words
 func numberToWord(number: Int) -> String {
@@ -26,12 +26,12 @@ func numberToWord(number: Int) -> String {
     }
 }
 
-numberToWord(0)
-numberToWord(1)
-numberToWord(2)
-numberToWord(3)
-numberToWord(4)
-numberToWord(5)
+numberToWord(number: 0)
+numberToWord(number: 1)
+numberToWord(number: 2)
+numberToWord(number: 3)
+numberToWord(number: 4)
+numberToWord(number: 5)
 
 // Pirate Ship
 
@@ -52,12 +52,12 @@ func pirateShip(gold: Int, pirates: Int) -> PirateShipState {
     return .Good
 }
 
-pirateShip(1,pirates:2)
-pirateShip(60,pirates:51)
-pirateShip(10,pirates:0)
-pirateShip(0,pirates:0)
-pirateShip(41,pirates:40)
-pirateShip(20,pirates:20)
+pirateShip(gold: 1,pirates:2)
+pirateShip(gold: 60,pirates:51)
+pirateShip(gold: 10,pirates:0)
+pirateShip(gold: 0,pirates:0)
+pirateShip(gold: 41,pirates:40)
+pirateShip(gold: 20,pirates:20)
 
 // Tip Calculator
 func tipCalculator(amount: Int, rating: Int) -> Int {
@@ -65,9 +65,9 @@ func tipCalculator(amount: Int, rating: Int) -> Int {
     let tip: Double = Double(amount) * (Double(rating) * percentMultiplier)
     return amount + Int(tip)
 }
-tipCalculator(100, rating: 1)
-tipCalculator(100, rating: 2)
-tipCalculator(100, rating: 3)
-tipCalculator(100, rating: 4)
-tipCalculator(100, rating: 5)
+tipCalculator(amount: 100, rating: 1)
+tipCalculator(amount: 100, rating: 2)
+tipCalculator(amount: 100, rating: 3)
+tipCalculator(amount: 100, rating: 4)
+tipCalculator(amount: 100, rating: 5)
 

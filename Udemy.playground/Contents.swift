@@ -6,13 +6,13 @@ func findGCD(m: Int, n:Int) -> Int {
     if r == 0 {
         result = n
     } else {
-        result = findGCD(n, n: r)
+        result = findGCD(m: n, n: r)
     }
     return result
 }
 
-findGCD(2, n: 1)
-findGCD(4, n: 2)
-findGCD(20, n: 16)
-findGCD(15, n: 12)
-findGCD(100, n: 75)
+findGCD(m: 2, n: 1)
+findGCD(m: 4, n: 2)
+findGCD(m: 20, n: 16)
+findGCD(m: 15, n: 12)
+findGCD(m: 100, n: 75)

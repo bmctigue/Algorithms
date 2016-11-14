@@ -28,7 +28,7 @@ struct FindDataStructureFromHash: FindProtocol,IndexsForHash {
         if valueArray.count < 2 {
             return []
         }
-        let resultArray = findIndexs(valueArray, target:target)
+        let resultArray = findIndexs(intArray: valueArray, target:target)
         if resultArray.count < 2 {
             return []
         }
@@ -49,7 +49,7 @@ struct FindDataStructureFromTarget: FindProtocol,IndexsForTarget {
         if valueArray.count < 2 {
             return []
         }
-        let resultArray = findIndexs(valueArray, target:target)
+        let resultArray = findIndexs(intArray: valueArray, target:target)
         if resultArray.count < 2 {
             return []
         }
@@ -94,8 +94,8 @@ extension IndexsForTarget {
                 break
             }
             print("i:\(i) targetMinusIndex:\(targetMinusIndex)")
-            if let index1 = intArray.indexOf(i) {
-                if let index2 = intArray.indexOf(targetMinusIndex) {
+            if let index1 = intArray.index(of: i) {
+                if let index2 = intArray.index(of: targetMinusIndex) {
                     printSeparator()
                     return [index1,index2]
                 }
@@ -113,23 +113,23 @@ extension IndexsForTarget {
 
 func testFindArrayTarget7FromHash() {
     var findDataStruct = FindDataStructureFromHash.init()
-    findDataStruct.addValue(7)
-    findDataStruct.addValue(2)
-    findDataStruct.addValue(1)
-    findDataStruct.addValue(5)
+    findDataStruct.addValue(value: 7)
+    findDataStruct.addValue(value: 2)
+    findDataStruct.addValue(value: 1)
+    findDataStruct.addValue(value: 5)
     let correctArray = [1,3]
-    let resultArray = findDataStruct.find(7).sort()
+    let resultArray = findDataStruct.find(target: 7).sorted()
     resultArray == correctArray
 }
 
 func testFindArrayTarget7FromTarget() {
     var findDataStruct = FindDataStructureFromTarget.init()
-    findDataStruct.addValue(7)
-    findDataStruct.addValue(2)
-    findDataStruct.addValue(1)
-    findDataStruct.addValue(5)
+    findDataStruct.addValue(value: 7)
+    findDataStruct.addValue(value: 2)
+    findDataStruct.addValue(value: 1)
+    findDataStruct.addValue(value: 5)
     let correctArray = [1,3]
-    let resultArray = findDataStruct.find(7).sort()
+    let resultArray = findDataStruct.find(target: 7).sorted()
     resultArray == correctArray
 }
 

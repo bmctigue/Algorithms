@@ -41,7 +41,7 @@ func reverseWordsInString(testString:String, delimiter:Character) -> String {
         currentChar = chars[index]
         if currentChar == delimiter {
             if prevChar != delimiter && (index - wordStart) > 1 {
-                chars = updateCharsWithReversedWord(chars, appendedString: appendedString, wordStart: wordStart, index: index)
+                chars = updateCharsWithReversedWord(chars: chars, appendedString: appendedString, wordStart: wordStart, index: index)
             }
         } else {
             if prevChar == delimiter {
@@ -51,13 +51,13 @@ func reverseWordsInString(testString:String, delimiter:Character) -> String {
         prevChar = currentChar
     }
     var reversedString = String(chars)
-    reversedString = reversedString[reversedString.startIndex.successor()..<reversedString.endIndex.predecessor()]
-    return reverseString(reversedString)
+    reversedString = reversedString[reversedString.index(reversedString.startIndex, offsetBy: 1)..<reversedString.index(reversedString.endIndex, offsetBy: -1)]
+    return reverseString(testString: reversedString)
 }
 
 func updateCharsWithReversedWord(chars:Array<Character>, appendedString:String, wordStart:Int, index:Int) -> Array<Character> {
     var newChars = chars
-    let reversedWord = reverseString(appendedString[appendedString.startIndex.advancedBy(wordStart)...appendedString.startIndex.advancedBy(index-1)])
+    let reversedWord = reverseString(testString: appendedString[appendedString.index(appendedString.startIndex, offsetBy: wordStart)...appendedString.index(appendedString.startIndex, offsetBy: index-1)])
     let subChars = Array(reversedWord.characters)
     for subIndex in 0..<subChars.count {
         newChars[subIndex + wordStart] = subChars[subIndex]
@@ -66,7 +66,7 @@ func updateCharsWithReversedWord(chars:Array<Character>, appendedString:String, 
 }
 
 let delimiter: Character = " "
-let result = reverseWordsInString(str, delimiter: delimiter)
+let result = reverseWordsInString(testString: str, delimiter: delimiter)
 print("\(result)")
 
 

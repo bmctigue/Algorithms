@@ -78,14 +78,14 @@ func testQueue() {
     print("-------------")
 
     queue.clear()
-    queue.enqueue(dinnerDish)
+    queue.enqueue(dish: dinnerDish)
     assert(queue.count() == 1, "queue size is not 1")
     queue.printData()
     
     queue.clear()
-    queue.enqueue(dinnerDish)
-    queue.enqueue(saladDish)
-    queue.enqueue(breadDish)
+    queue.enqueue(dish: dinnerDish)
+    queue.enqueue(dish: saladDish)
+    queue.enqueue(dish: breadDish)
     queue.printData()
     if let dish = queue.dequeue() {
         assert(dish == dinnerDish)
@@ -95,19 +95,19 @@ func testQueue() {
     queue.printData()
 
     queue.clear()
-    queue.enqueue(dinnerDish)
-    queue.enqueue(saladDish)
-    queue.enqueue(breadDish)
+    queue.enqueue(dish: dinnerDish)
+    queue.enqueue(dish: saladDish)
+    queue.enqueue(dish: breadDish)
     queue.clear()
     assert(queue.count() == 0, "queue size is not 0")
     print("queue is empty")
     print("-------------")
     
     queue.clear()
-    queue.enqueue(dinnerDish)
-    queue.enqueue(saladDish)
-    queue.enqueue(breadDish)
-    queue.enqueue(dinnerDish)
+    queue.enqueue(dish: dinnerDish)
+    queue.enqueue(dish: saladDish)
+    queue.enqueue(dish: breadDish)
+    queue.enqueue(dish: dinnerDish)
     queue.printData()
     if let dish1 = queue.dequeue() {
         assert(dish1 == dinnerDish)
@@ -135,7 +135,7 @@ func testQueue() {
     print("-------------")
     
     queue.clear()
-    queue.enqueue(breadDish)
+    queue.enqueue(dish: breadDish)
     assert(queue.count() == 1, "queue size is not 1")
     queue.printQueue()
 }

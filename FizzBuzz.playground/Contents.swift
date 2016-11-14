@@ -55,8 +55,8 @@ struct FizzBuzz {
             return
         }
         for i in lowerLimit...upperLimit {
-            let result: String? = evaluateNumber(i, xDivisor: xDivisor, yDivisor: yDivisor)
-            printResult(i, result: result)
+            let result: String? = evaluateNumber(i: i, xDivisor: xDivisor, yDivisor: yDivisor)
+            printResult(i: i, result: result)
         }
     }
     

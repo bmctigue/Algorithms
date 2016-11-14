@@ -4,11 +4,11 @@ func twoSum(intArray:[Int], target:Int) -> [Int] {
     if intArray.count < 2 {
         return []
     }
-    let indexArray = findIndexsForTwoSum(intArray, target:target)
+    let indexArray = findIndexsForTwoSum(intArray: intArray, target:target)
     if indexArray.count < 2 {
         return []
     }
-    let resultArray = formatResult(indexArray)
+    let resultArray = formatResult(indexArray: indexArray)
     return [resultArray[0],resultArray[1]]
 }
 
@@ -73,7 +73,7 @@ func findIndexsForTwoSum(intArray:[Int], target:Int) -> [Int] {
 
 func formatResult(indexArray:[Int]) -> [Int] {
     var indexArray = [indexArray[0],indexArray[1]]
-    indexArray = indexArray.sort()
+    indexArray = indexArray.sorted()
     return [indexArray[0]+1,indexArray[1]+1]
 }
 
@@ -83,71 +83,71 @@ func printSeparator() {
 
 func testTwoSumArrayCenterCheckOdd() {
     let inputArray = [7,2,1,3,5]
-    let correctArray = []
-    let resultArray = twoSum(inputArray, target:13)
+    let correctArray: [Int] = []
+    let resultArray = twoSum(intArray: inputArray, target:13)
     resultArray == correctArray
 }
 
 func testTwoSumArrayCenterCheckEven() {
     let inputArray = [7,2,1,3,6]
-    let correctArray = []
-    let resultArray = twoSum(inputArray, target:12)
+    let correctArray: [Int] = []
+    let resultArray = twoSum(intArray: inputArray, target:12)
     resultArray == correctArray
 }
 
 func testTwoSumArrayFaultyInput() {
     let inputArray = [7,2,1,5]
-    let correctArray = []
-    let resultArray = twoSum(inputArray, target:10)
+    let correctArray: [Int] = []
+    let resultArray = twoSum(intArray: inputArray, target:10)
     resultArray == correctArray
 }
 
 func testTwoSumArrayTarget7() {
     let inputArray = [7,2,1,5]
     let correctArray = [2,4]
-    let resultArray = twoSum(inputArray, target:7)
+    let resultArray = twoSum(intArray: inputArray, target:7)
     resultArray == correctArray
 }
 
 func testTwoSumArrayTarget6() {
     let inputArray = [0,2,4]
     let correctArray = [2,3]
-    let resultArray = twoSum(inputArray, target:6)
+    let resultArray = twoSum(intArray: inputArray, target:6)
     resultArray == correctArray
 }
 
 func testTwoSumArrayTarget4() {
     let inputArray = [0,2,4]
     let correctArray = [1,3]
-    let resultArray = twoSum(inputArray, target:4)
+    let resultArray = twoSum(intArray: inputArray, target:4)
     resultArray == correctArray
 }
 
 func testTwoSumArrayTarget2() {
     let inputArray = [0,2,4]
     let correctArray = [1,2]
-    let resultArray = twoSum(inputArray, target:2)
+    let resultArray = twoSum(intArray: inputArray, target:2)
     resultArray == correctArray
 }
 
 func testTwoSumArrayTarget2NoMatch() {
     let inputArray = [0,1]
-    let correctArray = []
-    let resultArray = twoSum(inputArray, target:2)
+    let correctArray: [Int] = []
+    let resultArray = twoSum(intArray: inputArray, target:2)
     resultArray == correctArray
 }
 
 func testTwoSumArrayTarget1() {
     let inputArray = [0,1]
     let correctArray = [1,2]
-    let resultArray = twoSum(inputArray, target:1)
+    let resultArray = twoSum(intArray: inputArray, target:1)
     resultArray == correctArray
 }
 
 func testTwoSumArraySize1() {
     let inputArray = [0]
-    let correctArray = []
-    let resultArray = twoSum(inputArray, target:2)
+    let correctArray: [Int] = []
+    let resultArray = twoSum(intArray: inputArray, target:2)
     resultArray == correctArray
 }
 
@@ -155,7 +155,7 @@ func testFormatResultInOrder() {
     let index1 = 1
     let index2 = 2
     let correctResult = [2,3]
-    let result = formatResult([index1,index2])
+    let result = formatResult(indexArray: [index1,index2])
     result == correctResult
 }
 
@@ -163,7 +163,7 @@ func testFormatResultInOutOrder() {
     let index1 = 2
     let index2 = 1
     let correctResult = [2,3]
-    let result = formatResult([index1,index2])
+    let result = formatResult(indexArray: [index1,index2])
     result == correctResult
 }
 

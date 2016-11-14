@@ -54,15 +54,15 @@ func testStack() {
     print("-------------")
     
     stack.clear()
-    stack.push(dinnerDish)
+    stack.push(dish: dinnerDish)
     assert(stack.count() == 1, "Stack size is not 1")
     stack.printStack()
     print("-------------")
     
     stack.clear()
-    stack.push(dinnerDish)
-    stack.push(saladDish)
-    stack.push(breadDish)
+    stack.push(dish: dinnerDish)
+    stack.push(dish: saladDish)
+    stack.push(dish: breadDish)
     if let dish = stack.pop() {
         assert(dish == breadDish)
         print("The popped dish is a bread dish")
@@ -72,16 +72,16 @@ func testStack() {
     print("-------------")
     
     stack.clear()
-    stack.push(dinnerDish)
-    stack.push(saladDish)
-    stack.push(breadDish)
+    stack.push(dish: dinnerDish)
+    stack.push(dish: saladDish)
+    stack.push(dish: breadDish)
     stack.clear()
     assert(stack.count() == 0, "Stack size is not 0")
     print("Stack is empty")
     print("-------------")
     
     stack.clear()
-    stack.push(breadDish)
+    stack.push(dish: breadDish)
     assert(stack.count() == 1, "Stack size is not 1")
     stack.printStack()
 }
@@ -91,7 +91,7 @@ func reverseArray(array:[Dish]) -> [Dish] {
     var stack = StackOfDishes()
     
     for dish in array {
-        stack.push(dish)
+        stack.push(dish: dish)
     }
     
     var dish = stack.pop()
@@ -106,16 +106,16 @@ func reverseArray(array:[Dish]) -> [Dish] {
 func testReverseArrayWithEmptyArray() {
     let testArray: [Dish] = []
     print("testArray: \(testArray)")
-    let resultArray = reverseArray(testArray)
-    assert(resultArray == testArray.reverse(), "Reversing empty array didn't work")
+    let resultArray = reverseArray(array: testArray)
+    assert(resultArray == testArray.reversed(), "Reversing empty array didn't work")
     print("resultArray: \(resultArray)")
 }
 
 func testReverseArray() {
     let testArray = [Dish.Bread,Dish.Dinner,Dish.Salad]
     print("testArray: \(testArray)")
-    let resultArray = reverseArray(testArray)
-    assert(resultArray == testArray.reverse(), "Reversing non empty array didn't work")
+    let resultArray = reverseArray(array: testArray)
+    assert(resultArray == testArray.reversed(), "Reversing non empty array didn't work")
     print("resultArray: \(resultArray)")
 }
 
