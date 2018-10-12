@@ -2,7 +2,6 @@
 
 import UIKit
 
-
 class Node {
     var nextNode: Node?
 }

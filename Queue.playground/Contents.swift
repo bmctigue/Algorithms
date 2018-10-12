@@ -131,7 +131,7 @@ func testQueue() {
     queue.printData()
     print("queue.count: \(queue.count())")
     assert(queue.count() == 0, "queue size is not 0")
-    assert(queue.isEmpty,"The queue is not empty")
+    assert(queue.isEmpty, "The queue is not empty")
     print("-------------")
     
     queue.clear()

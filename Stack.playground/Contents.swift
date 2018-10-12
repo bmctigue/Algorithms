@@ -112,7 +112,7 @@ func testReverseArrayWithEmptyArray() {
 }
 
 func testReverseArray() {
-    let testArray = [Dish.Bread,Dish.Dinner,Dish.Salad]
+    let testArray = [Dish.Bread, Dish.Dinner, Dish.Salad]
     print("testArray: \(testArray)")
     let resultArray = reverseArray(array: testArray)
     assert(resultArray == testArray.reversed(), "Reversing non empty array didn't work")

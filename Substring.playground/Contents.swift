@@ -16,10 +16,9 @@ import UIKit
 //let test1 = "World Wide Web"
 //let substring = "Test"
 
-
 func findSubString(testString: String, subString: String) -> Int {
-    let testChars = testString.characters.map({String($0)})
-    let subChars = subString.characters.map({String($0)})
+    let testChars = testString.map({ String($0) })
+    let subChars = subString.map({ String($0) })
     if testChars.count == 0 || subChars.count == 0 || subChars.count > testChars.count {
         return -1
     }
