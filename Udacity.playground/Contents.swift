@@ -6,4 +6,3 @@ func create_tour(nodes: Array<()>) -> Array<()> {
     
 }
 
-

@@ -1,5 +1,3 @@
-
-
 protocol NodeProtocol {
     var data: Int { get }
     var leftNode: Node? { get set }
@@ -69,7 +67,7 @@ class Node: NodeProtocol {
             rightHeight = rightNode!.height()
             print("rightHeight:\(rightHeight)")
         }
-        self.nodeHeight = max(leftHeight,rightHeight) + 1
+        self.nodeHeight = max(leftHeight, rightHeight) + 1
         print("data: \(self.data), height:\(self.nodeHeight)")
         return self.nodeHeight
     }
@@ -133,5 +131,4 @@ tree.height()
 tree.delete(data: 10)
 result = tree.find(data: 10)
 result?.data
-
 

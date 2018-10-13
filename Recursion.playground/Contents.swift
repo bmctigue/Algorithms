@@ -18,15 +18,15 @@ func move(n: Int, from: String, to: String, working: String) -> (a: [Int], c: [I
     if n > 0 {
         if n == 1 {
             print("Moving final disc 1 from \(from) to \(to)")
-            (a,c,b) = moveDisk(from: from, to:to, a: a, c: c, b: b)
+            (a, c, b) = moveDisk(from: from, to:to, a: a, c: c, b: b)
         } else {
             move(n: n-1, from:from, to:working, working:to)
             print("Moving disc \(n) from \(from) to \(to)")
-            (a,c,b) = moveDisk(from: from, to:to, a: a, c: c, b: b)
+            (a, c, b) = moveDisk(from: from, to:to, a: a, c: c, b: b)
             move(n: n-1, from:working, to:to, working:from)
         }
     }
-    return (a,c,b)
+    return (a, c, b)
 }
 
 func moveDisk(from: String, to: String, a: [Int], c: [Int], b: [Int]) -> (a: [Int], c: [Int], b: [Int]) {
@@ -60,8 +60,8 @@ func moveDisk(from: String, to: String, a: [Int], c: [Int], b: [Int]) -> (a: [In
         }
     default:break
     }
-    return (a,c,b)
+    return (a, c, b)
 }
-print(a,c,b)
-(a,c,b) = move(n: a.count,from:"A", to:"C", working:"B")
-print(a,c,b)
+print(a, c, b)
+(a, c, b) = move(n: a.count, from:"A", to:"C", working:"B")
+print(a, c, b)

@@ -1,4 +1,3 @@
-
 import UIKit
 
 protocol FindProtocol {
@@ -15,7 +14,7 @@ protocol IndexsForTarget {
     func printSeparator()
 }
 
-struct FindDataStructureFromHash: FindProtocol,IndexsForHash {
+struct FindDataStructureFromHash: FindProtocol, IndexsForHash {
     var valueArray = Array<Int>()
     
     mutating func addValue(value:Int) {
@@ -32,11 +31,11 @@ struct FindDataStructureFromHash: FindProtocol,IndexsForHash {
         if resultArray.count < 2 {
             return []
         }
-        return [resultArray[0],resultArray[1]]
+        return [resultArray[0], resultArray[1]]
     }
 }
 
-struct FindDataStructureFromTarget: FindProtocol,IndexsForTarget {
+struct FindDataStructureFromTarget: FindProtocol, IndexsForTarget {
     var valueArray = Array<Int>()
     
     mutating func addValue(value:Int) {
@@ -53,7 +52,7 @@ struct FindDataStructureFromTarget: FindProtocol,IndexsForTarget {
         if resultArray.count < 2 {
             return []
         }
-        return [resultArray[0],resultArray[1]]
+        return [resultArray[0], resultArray[1]]
     }
 }
 
@@ -68,7 +67,7 @@ extension IndexsForHash {
             if let index2 = hashTable[targetPartner] {
                 if i != index2 {
                     printSeparator()
-                    return [i,index2]
+                    return [i, index2]
                 }
             }
         }
@@ -97,7 +96,7 @@ extension IndexsForTarget {
             if let index1 = intArray.index(of: i) {
                 if let index2 = intArray.index(of: targetMinusIndex) {
                     printSeparator()
-                    return [index1,index2]
+                    return [index1, index2]
                 }
             }
         }
@@ -112,23 +111,23 @@ extension IndexsForTarget {
 }
 
 func testFindArrayTarget7FromHash() {
-    var findDataStruct = FindDataStructureFromHash.init()
+    var findDataStruct = FindDataStructureFromHash()
     findDataStruct.addValue(value: 7)
     findDataStruct.addValue(value: 2)
     findDataStruct.addValue(value: 1)
     findDataStruct.addValue(value: 5)
-    let correctArray = [1,3]
+    let correctArray = [1, 3]
     let resultArray = findDataStruct.find(target: 7).sorted()
     resultArray == correctArray
 }
 
 func testFindArrayTarget7FromTarget() {
-    var findDataStruct = FindDataStructureFromTarget.init()
+    var findDataStruct = FindDataStructureFromTarget()
     findDataStruct.addValue(value: 7)
     findDataStruct.addValue(value: 2)
     findDataStruct.addValue(value: 1)
     findDataStruct.addValue(value: 5)
-    let correctArray = [1,3]
+    let correctArray = [1, 3]
     let resultArray = findDataStruct.find(target: 7).sorted()
     resultArray == correctArray
 }

@@ -9,7 +9,7 @@ import UIKit
 //let sourceArray: Array<Int> = [0,3]
 //let sourceArray: Array<Int> = [3,0]
 //let sourceArray: Array<Int> = [3,1,2]
-let sourceArray: Array<Int> = [3,66,7,1,9,0]
+let sourceArray: Array<Int> = [3, 66, 7, 1, 9, 0]
 //let sourceArray: Array<Int> = [1,2,3,4,5,6]
 //let sourceArray: Array<Int> = [6,5,4,3,2,1]
 
@@ -126,7 +126,7 @@ func insertionSortForArray(testArray:Array<Int>) -> Array<Int> {
 
 //let insertionResult = insertionSortForArray(sourceArray)
 
-var array1 = [2,3,1,0,2,5,3]
+var array1 = [2, 3, 1, 0, 2, 5, 3]
 
 func findDuplicate() {
     var hash = [Int:Int]()
@@ -162,7 +162,7 @@ func findDuplicate2() {
 //findDuplicate2()
 
 //var matrix = [[1,2,3,4,6],[7,8,9,10,11]]
-var matrix = [[1,2,8,9],[2,4,9,12],[4,7,10,13],[6,8,11,15]]
+var matrix = [[1, 2, 8, 9], [2, 4, 9, 12], [4, 7, 10, 13], [6, 8, 11, 15]]
 
 func findIncludedInMatrix(test:Int) {
     var included = false
@@ -282,12 +282,11 @@ func colate(array1:[Int], array2:[Int]) -> [Int] {
     return resultArray
 }
 
-
-var testArray1: Array<Int> = [1,2]
-var testArray2: Array<Int> = [2,3,6,8]
+var testArray1: Array<Int> = [1, 2]
+var testArray2: Array<Int> = [2, 3, 6, 8]
 //var result = colate(testArray1,array2:testArray2)
 
-var testArray: Array<Int> = [110,3,2,4,99,32,1,0,22,31,53,6,1000,654,2,45]
+var testArray: Array<Int> = [110, 3, 2, 4, 99, 32, 1, 0, 22, 31, 53, 6, 1000, 654, 2, 45]
 //var testArray: Array<Int> = [3,2,1,5,9]
 //var testArray: Array<Int> = [3,2,4]
 //var result = mergeSort(testArray)

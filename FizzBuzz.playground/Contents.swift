@@ -64,12 +64,12 @@ struct FizzBuzz {
         let divisibleByX = i % xDivisor == 0
         let divisibleByY = i % yDivisor == 0
         
-        switch (divisibleByX,divisibleByY) {
-        case (true,true):
+        switch (divisibleByX, divisibleByY) {
+        case (true, true):
             return(ResultString.XY.rawValue)
-        case (true,false):
+        case (true, false):
             return(ResultString.X.rawValue)
-        case (false,true):
+        case (false, true):
             return(ResultString.Y.rawValue)
         default:
             return nil
@@ -86,8 +86,6 @@ struct FizzBuzz {
     
 }
 
-let fizzBuzz = FizzBuzz.init(lowerLimit: 1, upperLimit: 100, xDivisor: 3, yDivisor: 5)
+let fizzBuzz = FizzBuzz(lowerLimit: 1, upperLimit: 100, xDivisor: 3, yDivisor: 5)
 fizzBuzz.run()
-
-
 
