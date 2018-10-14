@@ -57,8 +57,8 @@ class Node: NodeProtocol {
     func height() -> Int {
         var leftHeight: Int = -1
         var rightHeight: Int = -1
-        print("leftNode:\(leftNode?.data)")
-        print("rightNode:\(rightNode?.data)")
+        print("leftNode:\(String(describing: leftNode?.data))")
+        print("rightNode:\(String(describing: rightNode?.data))")
         if leftNode != nil {
             leftHeight = leftNode!.height()
             print("leftHeight:\(leftHeight)")
