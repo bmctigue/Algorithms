@@ -2,10 +2,10 @@ import UIKit
 
 var str: String = "this is a list to reverse"
 
-var chars = Array(str.characters)
+var chars = Array(str)
 
 func reverseString(testString: String) -> String {
-    var chars = Array(testString.characters)
+    var chars = Array(testString)
     var lower:Int = 0
     var upper:Int = chars.count - 1
     var holder: Character
@@ -32,7 +32,7 @@ str = "My name is X Y Z"
 
 func reverseWordsInString(testString:String, delimiter:Character) -> String {
     let appendedString = String(delimiter) + testString + String(delimiter)
-    var chars = Array(appendedString.characters)
+    var chars = Array(appendedString)
     var wordStart:Int = 0
     var prevChar: Character = " "
     var currentChar:Character
@@ -51,14 +51,14 @@ func reverseWordsInString(testString:String, delimiter:Character) -> String {
         prevChar = currentChar
     }
     var reversedString = String(chars)
-    reversedString = reversedString[reversedString.index(reversedString.startIndex, offsetBy: 1)..<reversedString.index(reversedString.endIndex, offsetBy: -1)]
+    reversedString = String(reversedString[reversedString.index(reversedString.startIndex, offsetBy: 1)..<reversedString.index(reversedString.endIndex, offsetBy: -1)])
     return reverseString(testString: reversedString)
 }
 
 func updateCharsWithReversedWord(chars:Array<Character>, appendedString:String, wordStart:Int, index:Int) -> Array<Character> {
     var newChars = chars
-    let reversedWord = reverseString(testString: appendedString[appendedString.index(appendedString.startIndex, offsetBy: wordStart)...appendedString.index(appendedString.startIndex, offsetBy: index-1)])
-    let subChars = Array(reversedWord.characters)
+    let reversedWord = reverseString(testString: String(appendedString[appendedString.index(appendedString.startIndex, offsetBy: wordStart)...appendedString.index(appendedString.startIndex, offsetBy: index-1)]))
+    let subChars = Array(reversedWord)
     for subIndex in 0..<subChars.count {
         newChars[subIndex + wordStart] = subChars[subIndex]
     }
