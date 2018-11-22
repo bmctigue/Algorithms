@@ -14,21 +14,18 @@ class ReversedLinkedListInPlace {
     
     typealias T = Int
     
-    private var nodes: [Node<T>]
     private var head: Node<T>
     private let tail: Node<T>
     
-    init(_ nodes: [Node<T>]) {
-        self.nodes = nodes
-        let firstNode = nodes.first
-        self.head = firstNode!
+    init(_ node: Node<T>) {
+        self.head = node
         self.tail = head
     }
     
     func reverse() -> Node<T> {
         return reverseList(head: head, next: head.next)
     }
-
+    
     private func reverseList<T>(head: Node<T>, next: Node<T>?) -> Node<T> {
         guard next != nil else {
             tail.next = nil
@@ -64,9 +61,8 @@ class TestReverseLinkedListInPlace: XCTestCase {
     
     func testReverseOneNode() {
         let node = Node(1, nil)
-        let nodes = [node]
-        let reversedLinkedList = ReversedLinkedListInPlace(nodes)
-        var head = nodes.first!
+        let reversedLinkedList = ReversedLinkedListInPlace(node)
+        var head = node
         let originalNodes = reversedLinkedList.nodes(head)
         head = reversedLinkedList.reverse()
         let reversedNodes = reversedLinkedList.nodes(head)
@@ -78,9 +74,8 @@ class TestReverseLinkedListInPlace: XCTestCase {
         let node3 = Node(3, node4)
         let node2 = Node(2, node3)
         let node1 = Node(1, node2)
-        let nodes = [node1,node2,node3,node4]
-        let reversedLinkedList = ReversedLinkedListInPlace(nodes)
-        var head = nodes.first!
+        let reversedLinkedList = ReversedLinkedListInPlace(node1)
+        var head = node1
         let originalNodes = reversedLinkedList.nodes(head)
         head = reversedLinkedList.reverse()
         let reversedNodes = reversedLinkedList.nodes(head)
@@ -89,5 +84,3 @@ class TestReverseLinkedListInPlace: XCTestCase {
 }
 
 TestReverseLinkedListInPlace.defaultTestSuite.run()
-
-
