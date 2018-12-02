@@ -4,7 +4,7 @@ import XCTest
 class LoveLetter {
     
     func theLoveLetterMystery(s: String) -> Int {
-        let chars = s.compactMap{$0.unicodeScalars.first?.value}.map{Int($0)}
+        let chars = Array(s.utf8).map{Int($0)}
         guard s.count > 1 else {
             return 0
         }
