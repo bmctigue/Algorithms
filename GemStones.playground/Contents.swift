@@ -22,6 +22,9 @@ class GemStones {
             for mineral in stones {
                 if !rock.contains(mineral) {
                     tempStones.remove(mineral)
+                    if tempStones.count == 0 {
+                        return 0
+                    }
                 }
             }
             stones = tempStones
@@ -51,6 +54,13 @@ class TestGemStones: XCTestCase {
         let rocks = ["abcdde","baccd","eeabg"]
         let stones = sut.gemstones(arr: rocks)
         XCTAssert(stones == 2)
+    }
+    
+    func testGemStonesNoOverlappingRocks() {
+        let sut = GemStones()
+        let rocks: [String] = ["abc","def"]
+        let stones = sut.gemstones(arr: rocks)
+        XCTAssert(stones == 0)
     }
 }
 
