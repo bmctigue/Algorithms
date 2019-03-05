@@ -13,6 +13,10 @@ import Foundation
 */
 
 /*
+    Implementation Ideas
+*/
+
+/*
     Pseudo Code
 */
 
