@@ -35,10 +35,6 @@ func lcm(_ arr: [Int]) -> Int {
 func lcmsForArray(_ inputArr: [Int], _ arr: [Int]) -> [Int] {
     var lcms = [Int]()
     
-    guard inputArr.count > 1 else {
-        return inputArr
-    }
-    
     let lowestCommon = lcm(inputArr)
     let maxArray = arr.min() ?? 0
     var currentLowest = lowestCommon
@@ -111,6 +107,8 @@ class BetweenTwoSetsTests: XCTestCase {
         XCTAssertEqual(between,2)
         between = sut.getTotalX(a: [1], b: [100])
         XCTAssertEqual(between,9)
+        between = sut.getTotalX(a: [1], b: [72,48])
+        XCTAssertEqual(between,8)
     }
 }
 
